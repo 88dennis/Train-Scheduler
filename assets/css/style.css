@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0; 
+}
+
+
+body {
+  box-sizing: border-box;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.h1Title {
+  color: white;
+}
+
+.cardheader {
+  background-color: #afbdd4;
+}
