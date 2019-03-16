@@ -49,22 +49,29 @@ database.ref().on("value", function (snapshot) {
     var { name, destination, start, frequency } = trainSchedule[entries];
     
     var tableRow = $('<tr>');
-
     var tdName = $('<td>').text(name);
     var tdDestination = $('<td>').text(destination);
     var tdfrequency = $('<td>').text(frequency);
-    var tdStart = $('<td>').text(arrival);
     
-
+    
     // THIS IS TO COMPUTE THE ARRIVAL OF NEXT TRAIN
     var firstTimeConverted = moment(start, "HH:mm").subtract(1, "years");
     var currentTime = moment();
+
     var diffTime = currentTime.diff(moment(firstTimeConverted), "minutes");
     var tRemainder = diffTime % frequency;
+    
     var tMinsOfTrain = frequency - tRemainder;
+    
     var nextTrain = moment().add(tMinsOfTrain, "minutes");
     var tdArrival = $("<td>").text(tMinsOfTrain);
+      
     var arrival = moment(nextTrain).format("hh:mm");
+    var tdStart = $('<td>').text(arrival);
+    
+    
+    
+    
 
     tableRow.append(tdName, tdDestination, tdfrequency, tdStart, tdArrival);
     console.log(tableRow);
